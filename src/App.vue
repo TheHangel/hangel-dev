@@ -1,5 +1,5 @@
 <template>
-  <VInventory @item-change="onInventoryChange" :key="inventory" />
+  <VInventory />
 </template>
 
 <script>
@@ -9,18 +9,6 @@ import VInventory from './components/minecraft/VInventory.vue';
 export default {
   components: {
     VInventory
-  },
-  setup() {
-    const inventory = ref(0);
-
-    const onInventoryChange = () => {
-      inventory.value++;
-    }
-
-    return {
-      inventory,
-      onInventoryChange
-    }
   }
 }
 </script>
