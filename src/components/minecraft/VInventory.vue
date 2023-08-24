@@ -1,4 +1,5 @@
 <template>
+    {{ inventoryKey }}
     <button @click="addItem(arrow)">ADD</button>
     <draggable
         class="list-group"
@@ -10,16 +11,13 @@
         ghostClass="ghost"
         @start="drag = true"
         @end="drag = false"
+        :move="show"
     >
         <transition-group :key="inventoryKey" type="transition" :name="!drag ? 'flip-list' : null">
-            <div
-                v-for="(item, index) in inventory"
-                :key="index"
-            >
-                <VItem :item="item" :key="item.id" />
-            </div>
+            <VItem v-for="(item) in inventory" :item="item" :key="item.id" />
         </transition-group>
     </draggable>
+    {{ inventory }}
 </template>
 
 <script>
@@ -41,14 +39,18 @@ export default {
         const potion = ref({ id: 0, name: 'potion', extension: 'png' });
         const tipped_arrow = ref({ id: 1, name: 'tipped_arrow', extension: 'webp' });
 
-        const arrow = ref({ id: 2, name: 'arrow', extension: 'webp' });
+        const arrow = ref({ name: 'arrow', extension: 'webp' });
 
         // inventory
         const inventory = computed(() => {
-            return [potion.value, tipped_arrow.value, {  }]
+            return [potion.value, tipped_arrow.value]
         });
 
         // methods
+        const show = () => {
+            console.log(inventory.value);
+        }
+
         const changeItem = (item, id) => {
             const index = inventory.value.findIndex(item => item.id === id);
 
@@ -60,7 +62,8 @@ export default {
         }
 
         const addItem = (item) => {
-            inventory.value.push(item);
+            const newItem = { ...item, id: inventory.value.length };
+            inventory.value.push(newItem);
             update();
         }
 
@@ -70,11 +73,13 @@ export default {
 
         return {
             drag,
+            inventoryKey,
             inventory,
-            changeItem,
             arrow,
-            addItem,
-            inventoryKey
+            // methods
+            show,
+            changeItem,
+            addItem
         };
     }
 };
