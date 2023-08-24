@@ -25,6 +25,7 @@ export default {
 <style>
 .item {
     position: relative;
+    white-space: nowrap;
     z-index: 10;
     width: 200px;
     height: 200px;

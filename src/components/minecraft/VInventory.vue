@@ -1,100 +1,60 @@
 <template>
-    {{ inventoryKey }}
-    <button @click="addItem(arrow)">ADD</button>
+    <button class="btn btn-secondary" @click="add">Add</button>
+    <button class="btn btn-secondary" @click="replace">Replace</button>
+
     <draggable
-        class="list-group"
-        :animation="50"
-        :disabled="false"
-        :list="inventory"
-        item-key="id"
-        group="inventory"
-        ghostClass="ghost"
-        @start="drag = true"
-        @end="drag = false"
-        :move="show"
+      :list="inventory"
+      item-key="id"
+      class="list-group"
+      ghost-class="ghost"
+      draggable=".list-group-item:not(.exclude)"
+      :animation="50"
+      @start="dragging = true"
+      @end="dragging = false"
     >
-        <transition-group :key="inventoryKey" type="transition" :name="!drag ? 'flip-list' : null">
-            <VItem v-for="(item) in inventory" :item="item" :key="item.id" />
-        </transition-group>
+      <template #item="{ element }">
+          <VItem
+          :item="element"
+          class="list-group-item"
+          :class="{ 'exclude': element.disabled }"
+          />
+      </template>
     </draggable>
-    {{ inventory }}
 </template>
 
 <script>
-import { ref, computed } from 'vue';
-import { VueDraggableNext } from "vue-draggable-next";
+import draggable from "vuedraggable";
 import VItem from '@/components/minecraft/VItem.vue';
-
+let id = 4;
 export default {
-    components: {
-        draggable : VueDraggableNext,
-        VItem
+  components: {
+    draggable,
+    VItem
+  },
+  data() {
+    return {
+      inventory: [
+        { name: "potion", id: 0 },
+        { name: "arrow", extension: 'webp', id: 1 },
+        { name: "tipped_arrow", extension: 'webp', id: 2 },
+        { id: 3, disabled: true }
+      ],
+      dragging: false
+    };
+  },
+  methods: {
+    add: function() {
+      this.inventory.push({ name: "potion", id: id++ });
     },
-    setup(props, context) {
-
-        const drag = ref(false);
-        const inventoryKey = ref(0);
-
-        // items
-        const potion = ref({ id: 0, name: 'potion', extension: 'png' });
-        const tipped_arrow = ref({ id: 1, name: 'tipped_arrow', extension: 'webp' });
-
-        const arrow = ref({ name: 'arrow', extension: 'webp' });
-
-        // inventory
-        const inventory = computed(() => {
-            return [potion.value, tipped_arrow.value]
-        });
-
-        // methods
-        const show = () => {
-            console.log(inventory.value);
-        }
-
-        const changeItem = (item, id) => {
-            const index = inventory.value.findIndex(item => item.id === id);
-
-            if (index !== -1) {
-                inventory.value[index] = { ...item };
-            }
-            inventory.value[0].id = 99;
-            console.log(inventory.value);
-        }
-
-        const addItem = (item) => {
-            const newItem = { ...item, id: inventory.value.length };
-            inventory.value.push(newItem);
-            update();
-        }
-
-        const update = () => {
-            inventoryKey.value++;
-        }
-
-        return {
-            drag,
-            inventoryKey,
-            inventory,
-            arrow,
-            // methods
-            show,
-            changeItem,
-            addItem
-        };
+    replace: function() {
+      this.list = [{ name: "Edgard", id: id++ }];
     }
+  }
 };
 </script>
-
-<style>
-.list-group {
-    position: relative;
-}
-
-.slot {
-    position: absolute;
-}
+<style scoped>
 
 .ghost {
-    opacity: 0.5;
+opacity: 0.5;
 }
 </style>
