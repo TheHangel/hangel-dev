@@ -7,16 +7,14 @@
       item-key="id"
       class="list-group"
       ghost-class="ghost"
-      draggable=".list-group-item:not(.exclude)"
+      handle=".list-group-item:not(.exclude)"
       :animation="50"
-      @start="dragging = true"
-      @end="dragging = false"
     >
       <template #item="{ element }">
           <VItem
-          :item="element"
-          class="list-group-item"
-          :class="{ 'exclude': element.disabled }"
+            :item="element"
+            class="list-group-item"
+            :class="{ 'exclude': !element.name }"
           />
       </template>
     </draggable>
@@ -25,7 +23,7 @@
 <script>
 import draggable from "vuedraggable";
 import VItem from '@/components/minecraft/VItem.vue';
-let id = 4;
+let id = 8;
 export default {
   components: {
     draggable,
@@ -37,9 +35,12 @@ export default {
         { name: "potion", id: 0 },
         { name: "arrow", extension: 'webp', id: 1 },
         { name: "tipped_arrow", extension: 'webp', id: 2 },
-        { id: 3, disabled: true }
-      ],
-      dragging: false
+        { id: 3 },
+        { id: 4 },
+        { id: 5 },
+        { id: 6 },
+        { id: 7 },
+      ]
     };
   },
   methods: {
@@ -54,7 +55,11 @@ export default {
 </script>
 <style scoped>
 
+.list-group {
+  min-width: 1300px;
+}
+
 .ghost {
-opacity: 0.5;
+  opacity: 0.5;
 }
 </style>
