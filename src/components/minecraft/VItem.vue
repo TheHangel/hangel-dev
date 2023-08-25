@@ -1,5 +1,5 @@
 <template>
-    <img v-if="item.name" class="item" :src="item_texture" :alt="item.name">
+    <img v-if="item.name" class="item" :src="item.texture" :alt="item.name">
     <div v-else class="item"></div>
 </template>
 
@@ -10,13 +10,6 @@ export default {
         item: {
             type: Object,
             default: () => {}
-        }
-    },
-    setup(props) {
-        const extension = props.item.extension ? props.item.extension : 'png';
-        const item_texture = "src/assets/minecraft/"+props.item.name+"."+extension;
-        return {
-            item_texture
         }
     }
 }

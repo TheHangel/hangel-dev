@@ -23,6 +23,7 @@
 <script>
 import draggable from "vuedraggable";
 import VItem from '@/components/minecraft/VItem.vue';
+import ITEMS from '@/constants/items.js';
 let id = 8;
 export default {
   components: {
@@ -32,9 +33,9 @@ export default {
   data() {
     return {
       inventory: [
-        { name: "potion", id: 0 },
-        { name: "arrow", extension: 'webp', id: 1 },
-        { name: "tipped_arrow", extension: 'webp', id: 2 },
+        { ...ITEMS.GLASS_BOTTLE, id:0 },
+        { ...ITEMS.ARROW, id:1 },
+        { ...ITEMS.TIPPED_ARROW, id:2 },
         { id: 3 },
         { id: 4 },
         { id: 5 },
@@ -45,7 +46,7 @@ export default {
   },
   methods: {
     add: function() {
-      this.inventory.push({ name: "potion", id: id++ });
+      this.inventory.push({ ...ITEMS.GLASS_BOTTLE, id: id++ });
     },
     replace: function() {
       this.list = [{ name: "Edgard", id: id++ }];

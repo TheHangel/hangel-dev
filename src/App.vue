@@ -1,13 +1,14 @@
 <template>
-  <VInventory />
+  <router-view />
 </template>
 
 <script>
-import VInventory from '@/components/minecraft/VInventory.vue';
+import { useRoute, useRouter } from 'vue-router';
 
 export default {
-  components: {
-    VInventory
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
   }
 }
 </script>
