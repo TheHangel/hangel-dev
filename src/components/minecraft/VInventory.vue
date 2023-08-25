@@ -36,9 +36,9 @@ export default {
         { ...ITEMS.GLASS_BOTTLE, id:0 },
         { ...ITEMS.ARROW, id:1 },
         { ...ITEMS.TIPPED_ARROW, id:2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 },
+        { ...ITEMS.POTION, id: 3 },
+        { ...ITEMS.SPLASH_POTION, id: 4 },
+        { ...ITEMS.LINGERING_POTION, id: 5 },
         { id: 6 },
         { id: 7 },
       ]
