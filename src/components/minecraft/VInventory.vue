@@ -5,7 +5,7 @@
     <draggable
       :list="inventory"
       item-key="id"
-      class="list-group"
+      class="list-group m-w-200"
       ghost-class="ghost"
       handle=".list-group-item:not(.exclude)"
       :animation="50"
@@ -55,11 +55,6 @@ export default {
 };
 </script>
 <style scoped>
-
-.list-group {
-  min-width: 1300px;
-}
-
 .ghost {
   opacity: 0.5;
 }
