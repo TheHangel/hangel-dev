@@ -10,13 +10,10 @@
 </template>
 
 <script>
-import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 
 export default {
   setup() {
-    const router = useRouter();
-    const route = useRoute();
     const { locale } = useI18n();
     const changeLanguage = (lang) => {
       locale.value = lang;

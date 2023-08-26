@@ -12,16 +12,13 @@
         >
             {{ $t(text) }}
         </div>
+        <slot />
     </div>
 </template>
 
 <script>
-import VItem from './VItem.vue';
 
 export default {
-    components: {
-        VItem
-    },
     data() {
         return {
             mouseX: 0,

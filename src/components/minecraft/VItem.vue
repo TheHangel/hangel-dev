@@ -28,7 +28,6 @@ export default {
             type: Object,
             default: () => { }
         }
-    },
-    components: { VOverlayItem }
+    }
 }
 </script>
