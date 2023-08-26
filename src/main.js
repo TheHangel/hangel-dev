@@ -9,6 +9,7 @@ import en from './locales/en.js'
 import fr from './locales/fr.js'
 
 const i18n = createI18n({
+    legacy: false,
     locale: 'en',
     fallbackLocale: 'en',
     messages: {
