@@ -20,7 +20,7 @@ export default {
 
     // data
     const id = ref(0);
-    const MAX_ITEMS = 30;
+    const MAX_ITEMS = 10;
     const inventory = ref([]);
 
     // methods
@@ -36,6 +36,7 @@ export default {
 
     // lifecycle hooks
     onMounted(() => {
+      addItem({name:"special"});
       for(let i = 0; i < MAX_ITEMS; i++){
         addItem(randomItem());
       }

@@ -1,16 +1,21 @@
 <template>
     <img
-        v-if="item.name && !(item.texture instanceof Object)"
+        v-if="item.name !== 'special' && !(item.texture instanceof Object)"
         class="float-left aspect-square"
         :src="item.texture"
         :alt="item.name"
     >
     <VOverlayItem
-        v-else-if="item.name && (item.texture instanceof Object)"
+        v-else-if="(item.texture instanceof Object)"
         :item="item"
     />
     <div
-        v-else
+        v-else-if="item.name === 'special'"
+        class="w-0 h-0 float-left aspect-square border border-gray-400 bg-gray-200"
+    >
+    </div>
+    <div
+        v-else-if="!item.name"
         class="w-32 h-32 float-left aspect-square border border-gray-400 bg-gray-200"
     >
     </div>
