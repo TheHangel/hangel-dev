@@ -1,4 +1,5 @@
 export default {
+    EMPTY: {  },
     GLASS_BOTTLE: {
         name: 'glass_bottle',
         text: 'Glass Bottle',
