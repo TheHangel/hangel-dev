@@ -20,7 +20,7 @@ export default {
 
     // data
     const id = ref(0);
-    const MAX_ITEMS = 10;
+    const MAX_ITEMS = 9;
     const inventory = ref([]);
 
     // methods
