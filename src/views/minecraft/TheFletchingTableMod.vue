@@ -36,7 +36,6 @@ export default {
 
     // lifecycle hooks
     onMounted(() => {
-      addItem({name:"special"});
       for(let i = 0; i < MAX_ITEMS; i++){
         addItem(randomItem());
       }
