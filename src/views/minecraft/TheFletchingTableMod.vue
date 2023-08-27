@@ -9,6 +9,7 @@
 import { onMounted, ref } from 'vue';
 // constants
 import ITEMS from '@/constants/items.js';
+import EFFECTS from '@/constants/effects.js';
 // components
 import VInventory from '@/components/minecraft/VInventory.vue';
 
@@ -20,7 +21,7 @@ export default {
 
     // data
     const id = ref(0);
-    const MAX_ITEMS = 9;
+    const MAX_ITEMS = 36;
     const inventory = ref([]);
 
     // methods
@@ -31,7 +32,14 @@ export default {
     const randomItem = () => {
       const keys = Object.keys(ITEMS);
       const randomKey = keys[Math.floor(Math.random() * keys.length)];
-      return ITEMS[randomKey];
+      let i = ITEMS[randomKey];
+      if(i.name === 'tipped_arrow' || i.name === 'potion' || i.name === 'lingering_potion' || i.name === 'splash_potion') {
+        const keys = Object.keys(EFFECTS);
+        const randomKey = keys[Math.floor(Math.random() * keys.length)];
+        const e = EFFECTS[randomKey];
+        i = { ...i, effect: e };
+      }
+      return i;
     };
 
     // lifecycle hooks

@@ -49,7 +49,7 @@ export default {
                 ctx.drawImage(img2, 0, 0);
 
                 //ctx.globalAlpha = 0.5;
-                ctx.fillStyle = "#E89D3B";
+                ctx.fillStyle = item.effect.color;
                 if(item.name !== 'tipped_arrow') { // potion, lingering_potion, splash_potion
                     ctx.fillRect(80, 80, 30, 30);
                     ctx.fillRect(60, 110, 30, 30);
