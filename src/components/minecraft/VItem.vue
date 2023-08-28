@@ -11,7 +11,7 @@
     />
     <div
         v-else
-        class="w-32 h-32 float-left aspect-square border border-gray-400 bg-gray-200"
+        class="w-40 h-40 float-left aspect-square border border-gray-400 bg-gray-200"
     >
     </div>
 </template>
