@@ -15,16 +15,19 @@
           />
       </template>
     </draggable>
+    <VTooltip />
 </template>
 
 <script>
 import draggable from "vuedraggable";
 import VItem from '@/components/minecraft/VItem.vue';
+import VTooltip from '@/components/minecraft/VTooltip.vue';
 
 export default {
   components: {
     draggable,
-    VItem
+    VItem,
+    VTooltip
   },
   props: {
     inventory: {
