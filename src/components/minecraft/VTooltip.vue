@@ -1,5 +1,6 @@
 <template>
     <div
+        v-show="show"
         ref="divSouris"
         class="absolute bg-black opacity-70 select-none"
     >
