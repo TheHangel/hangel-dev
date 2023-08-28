@@ -1,7 +1,4 @@
 <template>
-  {{ dragging }}
-  {{ hoverItem }}
-  {{ isTooltipVisible }}
     <draggable
       :list="inventory"
       item-key="id"
@@ -17,12 +14,12 @@
             :item="element"
             class="list-group-item"
             :class="{ 'exclude': !element.name }"
-            @mouseover="hoverItem = true"
+            @mouseover="hoverItemStart(element)"
             @mouseleave="hoverItem = false"
           />
       </template>
     </draggable>
-    <VTooltip v-show="isTooltipVisible" />
+    <VTooltip v-show="isTooltipVisible" :name="hoveredItemName" />
 </template>
 
 <script>
@@ -45,17 +42,28 @@ export default {
   },
   setup() {
 
+    // data
     const dragging = ref(false);
     const hoverItem = ref(false);
+    const hoveredItemName = ref('');
 
+    // computed
     const isTooltipVisible = computed(() => {
       return !(dragging.value) && hoverItem.value;
     });
 
+    // methods
+    const hoverItemStart = (item) => {
+      hoverItem.value = true;
+      hoveredItemName.value = item.name;
+    };
+
     return {
       dragging,
       hoverItem,
-      isTooltipVisible
+      isTooltipVisible,
+      hoverItemStart,
+      hoveredItemName
     }
   }
 };

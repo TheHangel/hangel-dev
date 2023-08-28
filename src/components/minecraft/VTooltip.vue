@@ -1,10 +1,10 @@
 <template>
     <div
-        v-show="show"
+        v-show="name"
         ref="divSouris"
         class="absolute bg-black opacity-70 select-none"
     >
-        <p class="text-white">Voici le texte du div</p>
+        <p class="text-white">{{ $t(name) }}</p>
     </div>
 </template>
 
@@ -12,6 +12,12 @@
 import { ref, watch } from "vue";
 
 export default {
+    props: {
+        name: {
+            type: String,
+            default: ''
+        },
+    },
     setup() {
         const divSouris = ref(null);
 
