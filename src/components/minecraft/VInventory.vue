@@ -15,11 +15,11 @@
             class="list-group-item"
             :class="{ 'exclude': !element.name }"
             @mouseover="hoverItemStart(element)"
-            @mouseleave="hoverItem = false"
+            @mouseleave="hoverItemEnd"
           />
       </template>
     </draggable>
-    <VTooltip v-show="isTooltipVisible" :name="hoveredItemName" />
+    <VTooltip v-show="isTooltipVisible" :item-name="hoveredItemName" :effect-name="hoveredEffectName" />
 </template>
 
 <script>
@@ -46,6 +46,7 @@ export default {
     const dragging = ref(false);
     const hoverItem = ref(false);
     const hoveredItemName = ref('');
+    const hoveredEffectName = ref('');
 
     // computed
     const isTooltipVisible = computed(() => {
@@ -56,6 +57,13 @@ export default {
     const hoverItemStart = (item) => {
       hoverItem.value = true;
       hoveredItemName.value = item.name;
+      hoveredEffectName.value = (item.effect ? item.effect.name : '');
+    };
+
+    const hoverItemEnd = () => {
+      hoverItem.value = false;
+      hoveredItemName.value = '';
+      hoveredEffectName.value = '';
     };
 
     return {
@@ -63,7 +71,9 @@ export default {
       hoverItem,
       isTooltipVisible,
       hoverItemStart,
-      hoveredItemName
+      hoveredItemName,
+      hoveredEffectName,
+      hoverItemEnd
     }
   }
 };
