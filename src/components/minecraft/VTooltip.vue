@@ -1,10 +1,10 @@
 <template>
     <div
         ref="divSouris"
-        class="absolute bg-black opacity-70 select-none text-center pt-1 pb-1 pl-2 pr-2"
+        class="absolute bg-black opacity-80 select-none text-center align-items-center pt-3 pl-2 pr-2 -mt-3"
     >
-        <p v-if="effectName" class="text-white text-lg">{{ $t(itemName) }} {{ $t('of') }} {{ $t(effectName) }}</p>
-        <p v-else class="text-white text-lg">{{ $t(itemName) }}</p>
+        <p v-if="effectName" class="text-white text-lg !opacity-100" style="text-shadow: 2px 2px rgb(93, 93, 93); font-family: 'minecraftia';">{{ $t(itemName) }} {{ $t('of') }} {{ $t(effectName) }}</p>
+        <p v-else class="text-white text-lg !opacity-100" style="text-shadow: 2px 2px rgb(93, 93, 93); font-family: 'minecraftia';">{{ $t(itemName) }}</p>
     </div>
 </template>
 
