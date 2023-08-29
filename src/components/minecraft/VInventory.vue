@@ -19,7 +19,7 @@
           />
       </template>
     </draggable>
-    <VTooltip v-show="isTooltipVisible" :item-name="hoveredItemName" :effect-name="hoveredEffectName" />
+    <VTooltip v-show="isTooltipVisible && hoveredItemName" :item-name="hoveredItemName" :effect-name="hoveredEffectName" />
 </template>
 
 <script>
