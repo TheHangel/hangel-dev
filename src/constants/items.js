@@ -1,43 +1,36 @@
 export default {
-    EMPTY_SLOT: {  },
-    DISABLED_SLOT: { disabled: true },
-    GLASS_BOTTLE: {
+    empty_slot: {  },
+    glass_bottle: {
         name: 'glass_bottle',
-        text: 'Glass Bottle',
         texture: '/src/assets/minecraft/glass_bottle.png'
     },
-    ARROW: {
+    arrow: {
         name: 'arrow',
-        text: 'Arrow',
         texture: '/src/assets/minecraft/arrow.png'
     },
-    TIPPED_ARROW: {
+    tipped_arrow: {
         name: 'tipped_arrow',
-        text: 'Tipped Arrow',
         texture: {
             base: '/src/assets/minecraft/tipped_arrow_base.png',
             overlay: '/src/assets/minecraft/tipped_arrow_head.png'
         }
     },
-    POTION: {
+    potion: {
         name: 'potion',
-        text: 'Potion',
         texture: {
             base: '/src/assets/minecraft/glass_bottle.png',
             overlay: '/src/assets/minecraft/potion_overlay.png'
         }
     },
-    SPLASH_POTION: {
+    splash_potion: {
         name: 'splash_potion',
-        text: 'Splash Potion',
         texture: {
             base: '/src/assets/minecraft/splash_potion.png',
             overlay: '/src/assets/minecraft/potion_overlay.png'
         }
     },
-    LINGERING_POTION: {
+    lingering_potion: {
         name: 'lingering_potion',
-        text: 'Lingering Potion',
         texture: {
             base: '/src/assets/minecraft/lingering_potion.png',
             overlay: '/src/assets/minecraft/potion_overlay.png'

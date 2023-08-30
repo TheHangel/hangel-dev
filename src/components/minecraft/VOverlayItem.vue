@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import ITEMS from '@/constants/items.js';
 
 export default {
     props: {
@@ -50,7 +51,7 @@ export default {
 
                 //ctx.globalAlpha = 0.5;
                 ctx.fillStyle = item.effect.color;
-                if(item.name !== 'tipped_arrow') { // potion, lingering_potion, splash_potion
+                if(item.name !== ITEMS.tipped_arrow.name) { // potion, lingering_potion, splash_potion
                     ctx.fillRect(80, 80, 30, 30);
                     ctx.fillRect(60, 110, 30, 30);
                     ctx.fillRect(50, 90, 10, 40);
