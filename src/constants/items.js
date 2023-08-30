@@ -1,5 +1,6 @@
 export default {
-    EMPTY: {  },
+    EMPTY_SLOT: {  },
+    DISABLED_SLOT: { disabled: true },
     GLASS_BOTTLE: {
         name: 'glass_bottle',
         text: 'Glass Bottle',

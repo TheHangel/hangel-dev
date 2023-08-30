@@ -2,6 +2,8 @@
   <VInventory
     :key="id"
     :inventory="inventory"
+    @move="moveItem($event)"
+    @dragend="dragEnd"
   />
 </template>
 
@@ -23,6 +25,11 @@ export default {
     const id = ref(0);
     const MAX_ITEMS = 36;
     const inventory = ref([]);
+    const movingIndex = ref(-1);
+    const nextIndex = ref(-1);
+    const movingItem = ref({});
+    const nextItem = ref({});
+    const hasMoved = ref(false);
 
     // methods
     const addItem = (item) => {
@@ -42,16 +49,39 @@ export default {
       return i;
     };
 
+    const moveItem = (event) => {
+      const { index, futureIndex } = event.draggedContext;
+      movingIndex.value = index;
+      nextIndex.value = futureIndex;
+      hasMoved.value = true;
+    };
+
+    const dragEnd = () => {
+      if (hasMoved.value) {
+          nextItem.value = inventory.value[nextIndex.value];
+          movingItem.value = inventory.value[movingIndex.value];
+          const _inventory = Object.assign([], inventory.value);
+          _inventory[nextIndex.value] = movingItem.value;
+          _inventory[movingIndex.value] = nextItem.value;
+  
+          inventory.value = _inventory;
+          hasMoved.value = false;
+        }
+    };
+
     // lifecycle hooks
     onMounted(() => {
-      for(let i = 0; i < MAX_ITEMS; i++){
+      for(let i = 0; i < MAX_ITEMS; i++) {
         addItem(randomItem());
       }
     });
 
     return {
       inventory,
-      id
+      id,
+      // methods
+      moveItem,
+      dragEnd
     }
   }
 }

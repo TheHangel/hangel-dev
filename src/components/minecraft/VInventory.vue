@@ -3,11 +3,10 @@
       :list="inventory"
       item-key="id"
       class="list-group m-w-200"
-      ghost-class="ghost"
       handle=".list-group-item:not(.exclude)"
-      :animation="50"
+      :move="handleMove"
       @start="dragging = true"
-      @end="dragging = false"
+      @end="handleDragEnd"
     >
       <template #item="{ element }">
           <VItem
@@ -19,7 +18,12 @@
           />
       </template>
     </draggable>
-    <VTooltip v-show="isTooltipVisible && hoveredItemName" :item-name="hoveredItemName" :effect-name="hoveredEffectName" />
+
+    <VTooltip
+      v-show="isTooltipVisible && hoveredItemName"
+      :item-name="hoveredItemName"
+      :effect-name="hoveredEffectName"
+    />
 </template>
 
 <script>
@@ -40,7 +44,8 @@ export default {
       default: () => []
     }
   },
-  setup() {
+  emits: ['move', 'dragend'],
+  setup(props, context) {
 
     // data
     const dragging = ref(false);
@@ -66,20 +71,30 @@ export default {
       hoveredEffectName.value = '';
     };
 
+    const handleDragEnd = () => {
+      dragging.value = false;
+      context.emit('dragend');
+    };
+
+    const handleMove = (e) => {
+      context.emit('move', e);
+      return false;
+    };
+
     return {
+      // data
       dragging,
       hoverItem,
-      isTooltipVisible,
-      hoverItemStart,
       hoveredItemName,
       hoveredEffectName,
-      hoverItemEnd
+      // computed
+      isTooltipVisible,
+      // methods
+      hoverItemStart,
+      hoverItemEnd,
+      handleDragEnd,
+      handleMove
     }
   }
 };
 </script>
-<style scoped>
-.ghost {
-  opacity: 0.5;
-}
-</style>
