@@ -1,14 +1,16 @@
 <template>
-    <img
-        v-if="item.name && !(item.texture instanceof Object)"
-        class="float-left aspect-square"
-        :src="item.texture"
-        :alt="item.name"
-    >
-    <VOverlayItem
-        v-else-if="item.name && (item.texture instanceof Object)"
-        :item="item"
-    />
+    <div v-if="item.name">
+        <img
+            v-if="!(item.texture instanceof Object)"
+            class="float-left aspect-square"
+            :src="item.texture"
+            :alt="item.name"
+        >
+        <VOverlayItem
+            v-else
+            :item="item"
+        />
+    </div>
     <div
         v-else
         class="w-40 h-40 float-left aspect-square"
@@ -17,7 +19,7 @@
 </template>
 
 <script>
-import VOverlayItem from './VOverlayItem.vue';
+import VOverlayItem from '@/components/minecraft/VOverlayItem.vue'
 
 export default {
     components: {
