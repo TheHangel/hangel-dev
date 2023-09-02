@@ -2,7 +2,7 @@
     <draggable
       :list="inventory"
       item-key="id"
-      class="list-group w-[96rem]"
+      class="list-group w-[96rem] mx-auto"
       handle=".list-group-item:not(.exclude)"
       draggable=".list-group-item:not(.disabled)"
       :move="handleMove"
@@ -13,7 +13,7 @@
           <VItem
             :item="element"
             class="list-group-item"
-            :class="{ 'exclude': !element.name, 'disabled border': element.disabled }"
+            :class="{ 'exclude': !element.name, 'disabled border !border-red-500': element.disabled }"
             @mouseover="hoverItemStart(element)"
             @mouseleave="hoverItemEnd"
           />

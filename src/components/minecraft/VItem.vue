@@ -13,7 +13,7 @@
     </div>
     <div
         v-else
-        class="w-40 h-40 float-left aspect-square"
+        class="w-40 h-40 float-left aspect-square border-2 border-blue-500"
     >
     </div>
 </template>

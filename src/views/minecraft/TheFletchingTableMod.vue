@@ -31,13 +31,13 @@ export default {
     const hasMoved = ref(false);
 
     // constants
-    const MAX_HORINZONTAL_ITEMS = 9;
+    const MAX_HORIZONTAL_ITEMS = 9;
     const MAX_VERTICAL_ITEMS = 3;
-    const MAX_ITEMS = MAX_HORINZONTAL_ITEMS*MAX_VERTICAL_ITEMS;
+    const MAX_ITEMS = MAX_HORIZONTAL_ITEMS*MAX_VERTICAL_ITEMS;
     const DISABLED_SLOT = { disabled: true };
-    const RECIPE_ARROW_INDEX = 2;
-    const RECIPE_EFFECT_INDEX = 5;
-    const RECIPE_RESULT_INDEX = 8;
+    const RECIPE_ARROW_INDEX = 10;
+    const RECIPE_EFFECT_INDEX = 13;
+    const RECIPE_RESULT_INDEX = 16;
 
     // methods
     const addItem = (item) => {
@@ -97,11 +97,15 @@ export default {
         const tippedArrow = { ...ITEMS.tipped_arrow, effect };
         replaceItem(tippedArrow, RECIPE_RESULT_INDEX);
       }
-    }
+    };
 
     const dragEnd = () => {
       if (hasMoved.value) {
           nextItem.value = inventory.value[nextIndex.value];
+          if(nextItem.value.disabled) {
+            hasMoved.value = false;
+            return;
+          }
           movingItem.value = inventory.value[movingIndex.value];
           const _inventory = Object.assign([], inventory.value);
           _inventory[nextIndex.value] = movingItem.value;
@@ -114,13 +118,17 @@ export default {
     };
 
     const fillFletchingTable = () => {
-      for(let i = 0; i < 3; i++) {
-        for(let i = 0; i < 2; i++) {
+      for(let i = 0; i < MAX_HORIZONTAL_ITEMS; i++) {
+        for(let j = 0; j < MAX_VERTICAL_ITEMS; j++) {
+          const index = i * MAX_VERTICAL_ITEMS + j;
+          if(index === RECIPE_ARROW_INDEX || index === RECIPE_EFFECT_INDEX || index === RECIPE_RESULT_INDEX) {
+            addItem(ITEMS.empty_slot);
+            continue;
+          }
           addItem(DISABLED_SLOT);
         }
-        addItem(ITEMS.empty_slot);
       }
-    }
+    };
 
     const fillInventory = () => {
       for(let i = 0; i < MAX_ITEMS; i++) {
