@@ -2,7 +2,7 @@
     <draggable
       :list="inventory"
       item-key="id"
-      class="list-group m-w-200"
+      class="list-group w-[96rem]"
       handle=".list-group-item:not(.exclude)"
       draggable=".list-group-item:not(.disabled)"
       :move="handleMove"

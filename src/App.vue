@@ -3,9 +3,6 @@
   <br>
   <button @click="changeLanguage('en')">English</button>
   <button @click="changeLanguage('fr')">French</button>
-  <br>
-  {{ $t('glass_bottle') }}
-  <br>
   <router-view />
 </template>
 

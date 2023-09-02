@@ -23,7 +23,6 @@ export default {
 
     // data
     const id = ref(0);
-    const MAX_ITEMS = 36;
     const inventory = ref([]);
     const movingIndex = ref(-1);
     const nextIndex = ref(-1);
@@ -31,7 +30,14 @@ export default {
     const nextItem = ref({});
     const hasMoved = ref(false);
 
+    // constants
+    const MAX_HORINZONTAL_ITEMS = 9;
+    const MAX_VERTICAL_ITEMS = 3;
+    const MAX_ITEMS = MAX_HORINZONTAL_ITEMS*MAX_VERTICAL_ITEMS;
     const DISABLED_SLOT = { disabled: true };
+    const RECIPE_ARROW_INDEX = 2;
+    const RECIPE_EFFECT_INDEX = 5;
+    const RECIPE_RESULT_INDEX = 8;
 
     // methods
     const addItem = (item) => {
@@ -76,20 +82,20 @@ export default {
     };
 
     const checkRecipe = () => {
-      if(movingIndex.value === 8) {
-        replaceItem(ITEMS.empty_slot, 2);
-        replaceItem(ITEMS.empty_slot, 5);
+      if(movingIndex.value === RECIPE_RESULT_INDEX) {
+        replaceItem(ITEMS.empty_slot, RECIPE_ARROW_INDEX);
+        replaceItem(ITEMS.empty_slot, RECIPE_EFFECT_INDEX);
       }
-      if(!isEmpty(itemWithoutId(inventory.value[8]))) {
-        if(!inventory.value[2].name === ITEMS.arrow.name || !isPotion(inventory.value[5])){
-          replaceItem(ITEMS.empty_slot, 8);
+      if(!isEmpty(itemWithoutId(inventory.value[RECIPE_RESULT_INDEX]))) {
+        if(!inventory.value[RECIPE_ARROW_INDEX].name === ITEMS.arrow.name || !isPotion(inventory.value[RECIPE_EFFECT_INDEX])){
+          replaceItem(ITEMS.empty_slot, RECIPE_RESULT_INDEX);
         }
         return;
       }
-      if(inventory.value[2].name === ITEMS.arrow.name && isPotion(inventory.value[5])) {
-        const effect = inventory.value[5].effect;
+      if(inventory.value[RECIPE_ARROW_INDEX].name === ITEMS.arrow.name && isPotion(inventory.value[RECIPE_EFFECT_INDEX])) {
+        const effect = inventory.value[RECIPE_EFFECT_INDEX].effect;
         const tippedArrow = { ...ITEMS.tipped_arrow, effect };
-        replaceItem(tippedArrow, 8);
+        replaceItem(tippedArrow, RECIPE_RESULT_INDEX);
       }
     }
 
@@ -107,26 +113,25 @@ export default {
         }
     };
 
-    // lifecycle hooks
-    onMounted(() => {
-      for(let i = 0; i < 2; i++) {
-        addItem(DISABLED_SLOT);
-      }
-      addItem(ITEMS.empty_slot);
-      for(let i = 0; i < 2; i++) {
-        addItem(DISABLED_SLOT);
-      }
-      addItem(ITEMS.empty_slot);
-      for(let i = 0; i < 2; i++) {
-        addItem(DISABLED_SLOT);
-      }
-      addItem(ITEMS.empty_slot);
+    const fillFletchingTable = () => {
       for(let i = 0; i < 3; i++) {
-        addItem(DISABLED_SLOT);
+        for(let i = 0; i < 2; i++) {
+          addItem(DISABLED_SLOT);
+        }
+        addItem(ITEMS.empty_slot);
       }
+    }
+
+    const fillInventory = () => {
       for(let i = 0; i < MAX_ITEMS; i++) {
         addItem(randomItem());
       }
+    };
+
+    // lifecycle hooks
+    onMounted(() => {
+      fillFletchingTable();
+      fillInventory();
     });
 
     return {
