@@ -47,16 +47,8 @@ export default {
       return rest;
     };
 
-    const itemsEqual = (item1, item2) => {
-      return JSON.stringify(itemWithoutId(item1)) === JSON.stringify(itemWithoutId(item2));
-    };
-
     const isEmpty = (item) => {
       return Object.keys(item).length === 0 && item.constructor === Object;
-    };
-
-    const hasEffect = (item) => {
-      return (item.effect !== 'undefined');
     };
 
     const isPotion = (item) => {
@@ -67,7 +59,7 @@ export default {
       const keys = Object.keys(ITEMS);
       const randomKey = keys[Math.floor(Math.random() * keys.length)];
       let i = ITEMS[randomKey];
-      if(i.name === ITEMS.tipped_arrow.name || i.name === ITEMS.potion.name || i.name === ITEMS.lingering_potion.name || i.name === ITEMS.splash_potion.name) {
+      if(i.name === ITEMS.tipped_arrow.name || isPotion(i)) {
         const keys = Object.keys(EFFECTS);
         const randomKey = keys[Math.floor(Math.random() * keys.length)];
         const e = EFFECTS[randomKey];
@@ -84,14 +76,20 @@ export default {
     };
 
     const checkRecipe = () => {
-      console.log('check recipe');
-      console.log(inventory.value[8]);
-      if(isEmpty(itemWithoutId(inventory.value[8]))) {
-        console.log('empty slot step 1');
-        if(inventory.value[2].name === ITEMS.arrow.name && isPotion(inventory.value[5])) {
-          console.log('empty slot step 2');
-          replaceItem(ITEMS.arrow, 8);
+      if(movingIndex.value === 8) {
+        replaceItem(ITEMS.empty_slot, 2);
+        replaceItem(ITEMS.empty_slot, 5);
+      }
+      if(!isEmpty(itemWithoutId(inventory.value[8]))) {
+        if(!inventory.value[2].name === ITEMS.arrow.name || !isPotion(inventory.value[5])){
+          replaceItem(ITEMS.empty_slot, 8);
         }
+        return;
+      }
+      if(inventory.value[2].name === ITEMS.arrow.name && isPotion(inventory.value[5])) {
+        const effect = inventory.value[5].effect;
+        const tippedArrow = { ...ITEMS.tipped_arrow, effect };
+        replaceItem(tippedArrow, 8);
       }
     }
 
