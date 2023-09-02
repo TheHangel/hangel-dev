@@ -4,25 +4,18 @@
         class="absolute bg-black opacity-80 select-none text-center align-items-center pt-3 pl-2 pr-2 -mt-3"
     >
         <p
-            v-if="effectName"
+            v-if="itemName"
             class="text-white text-lg !opacity-100 font-minecraftia"
             style="text-shadow: 2px 2px rgb(93, 93, 93);"
         >
-            {{ $t(itemName) }} {{ $t('of') }} {{ $t(effectName) }}
-        </p>
-        <p
-            v-else
-            class="text-white text-lg !opacity-100
-            font-minecraftia"
-            style="text-shadow: 2px 2px rgb(93, 93, 93);"
-        >
-            {{ $t(itemName) }}
+            {{ displayName }}
         </p>
     </div>
 </template>
 
 <script>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
+import { useI18n } from 'vue-i18n';
 
 export default {
     props: {
@@ -35,10 +28,11 @@ export default {
             default: ''
         }
     },
-    setup() {
+    setup(props) {
 
         // data
         const divTooltip = ref(null);
+        const { t } = useI18n();
 
         // watchers
         watch(divTooltip, () => {
@@ -50,7 +44,15 @@ export default {
             });
         });
 
-        return { divTooltip };
+        // computed
+        const displayName = computed(() => {
+            return (props.itemName && props.effectName) ? `${t(props.itemName)} ${t('of')} ${t(props.effectName)}` : t(props.itemName);
+        });
+
+        return {
+            divTooltip,
+            displayName
+        };
     }
 }
 </script>
