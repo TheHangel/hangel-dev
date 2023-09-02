@@ -39,7 +39,7 @@ export default {
             window.addEventListener("mousemove", (event) => {
                 if(divTooltip.value !== null) {
                     divTooltip.value.style.left = (event.clientX+10) + "px";
-                    divTooltip.value.style.top = (event.clientY-25) + "px";
+                    divTooltip.value.style.top = (event.pageY-25) + "px";
                 }
             });
         });
