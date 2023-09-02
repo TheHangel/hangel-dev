@@ -67,7 +67,7 @@ export default {
       const keys = Object.keys(ITEMS);
       const randomKey = keys[Math.floor(Math.random() * keys.length)];
       let i = ITEMS[randomKey];
-      if(hasEffect(i)) {
+      if(i.name === ITEMS.tipped_arrow.name || i.name === ITEMS.potion.name || i.name === ITEMS.lingering_potion.name || i.name === ITEMS.splash_potion.name) {
         const keys = Object.keys(EFFECTS);
         const randomKey = keys[Math.floor(Math.random() * keys.length)];
         const e = EFFECTS[randomKey];
