@@ -85,7 +85,12 @@ export default {
     const checkRecipe = () => {
       if(movingIndex.value === RECIPE_RESULT_INDEX) {
         replaceItem(ITEMS.empty_slot, RECIPE_ARROW_INDEX);
-        replaceItem(ITEMS.empty_slot, RECIPE_EFFECT_INDEX);
+        if(inventory.value[RECIPE_EFFECT_INDEX].name === ITEMS.potion.name) {
+          replaceItem(ITEMS.glass_bottle, RECIPE_EFFECT_INDEX);
+        }
+        else {
+          replaceItem(ITEMS.empty_slot, RECIPE_EFFECT_INDEX);
+        }
       }
       if(!isEmpty(itemWithoutId(inventory.value[RECIPE_RESULT_INDEX]))) {
         if(!(inventory.value[RECIPE_ARROW_INDEX].name === ITEMS.arrow.name) || !isPotion(inventory.value[RECIPE_EFFECT_INDEX])){
@@ -100,19 +105,21 @@ export default {
       }
     };
 
+    const isFordiddenMove = () => {
+      return (nextItem.value.disabled || nextIndex.value === RECIPE_RESULT_INDEX
+      ||
+        (movingIndex.value === RECIPE_RESULT_INDEX
+        &&
+        (nextIndex.value === RECIPE_ARROW_INDEX || nextIndex.value === RECIPE_EFFECT_INDEX)
+        )
+      ||
+        (movingIndex.value === RECIPE_RESULT_INDEX && !isEmpty(itemWithoutId(nextItem.value))));
+    };
+
     const dragEnd = () => {
       if (hasMoved.value) {
           nextItem.value = inventory.value[nextIndex.value];
-          if(
-              nextItem.value.disabled || nextIndex.value === RECIPE_RESULT_INDEX
-              ||
-                (movingIndex.value === RECIPE_RESULT_INDEX
-                &&
-                (nextIndex.value === RECIPE_ARROW_INDEX || nextIndex.value === RECIPE_EFFECT_INDEX)
-                )
-              ||
-                (movingIndex.value === RECIPE_RESULT_INDEX && !isEmpty(itemWithoutId(nextItem.value)))
-            ) {
+          if(isFordiddenMove()) {
             hasMoved.value = false;
             return;
           }
