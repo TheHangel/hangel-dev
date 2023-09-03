@@ -1,8 +1,11 @@
 <template>
+  <div class="container mx-auto relative">
+    <img src="/src/assets/minecraft/fletching_table_gui.png" alt="fletching_table_gui">
+
     <draggable
       :list="inventory"
       item-key="id"
-      class="list-group w-[96rem] mx-auto"
+      class="list-group w-[96rem] absolute top-32 left-11"
       handle=".list-group-item:not(.exclude)"
       draggable=".list-group-item:not(.disabled)"
       :move="handleMove"
@@ -19,6 +22,7 @@
           />
       </template>
     </draggable>
+  </div>
 
     <VTooltip
       v-show="isTooltipVisible && hoveredItemName"
