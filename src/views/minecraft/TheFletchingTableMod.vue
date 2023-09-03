@@ -45,6 +45,7 @@ export default {
     };
 
     const replaceItem = (item, index) => {
+      item = { ...item, id: id.value++ };
       inventory.value[index] = item;
     };
 
@@ -87,7 +88,7 @@ export default {
         replaceItem(ITEMS.empty_slot, RECIPE_EFFECT_INDEX);
       }
       if(!isEmpty(itemWithoutId(inventory.value[RECIPE_RESULT_INDEX]))) {
-        if(!inventory.value[RECIPE_ARROW_INDEX].name === ITEMS.arrow.name || !isPotion(inventory.value[RECIPE_EFFECT_INDEX])){
+        if(!(inventory.value[RECIPE_ARROW_INDEX].name === ITEMS.arrow.name) || !isPotion(inventory.value[RECIPE_EFFECT_INDEX])){
           replaceItem(ITEMS.empty_slot, RECIPE_RESULT_INDEX);
         }
         return;
@@ -102,7 +103,16 @@ export default {
     const dragEnd = () => {
       if (hasMoved.value) {
           nextItem.value = inventory.value[nextIndex.value];
-          if(nextItem.value.disabled) {
+          if(
+              nextItem.value.disabled || nextIndex.value === RECIPE_RESULT_INDEX
+              ||
+                (movingIndex.value === RECIPE_RESULT_INDEX
+                &&
+                (nextIndex.value === RECIPE_ARROW_INDEX || nextIndex.value === RECIPE_EFFECT_INDEX)
+                )
+              ||
+                (movingIndex.value === RECIPE_RESULT_INDEX && !isEmpty(itemWithoutId(nextItem.value)))
+            ) {
             hasMoved.value = false;
             return;
           }
