@@ -2,7 +2,7 @@ export default [
     {
         name: "Quarto",
         categorie: "Jeu",
-        description: "Projet de jeu développé en C se jouant dans le terminal.",
+        description: "Petit jeu développé en C se jouant dans le terminal.",
         thumbnail: "/src/assets/quarto_thumbnail.png"
     },
     {

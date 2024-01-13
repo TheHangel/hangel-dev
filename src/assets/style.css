@@ -9,110 +9,11 @@
 @tailwind components;
 @tailwind utilities;
 
-*, ::before, ::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body{
-    margin: 0;
     /*background-image: url(images/background.png);*/
     background: #202023;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
     font-family: "Ubuntu", sans-serif;
-    height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
-
     color: white;
-}
-
-.content-quarto .quarto-infos p {
-    text-align: center;
-    font-size: 0.9em;
-}
-
-.content-quarto .quarto-preambule p {
-    padding-bottom: 0;
-    padding-top: 0;
-}
-
-.jeux-text, .mods-text {
-    display: flex;
-    align-items: center;
-}
-
-.projects img {
-    position: relative;
-    bottom: 50px;
-    right: 50px;
-    width: 300px;
-    max-width: 300px;
-    border-radius: 10px 10px 0px 0px;
-}
-
-.content article {
-    display: inline-block;
-    padding: 50px;
-    margin-left: 10vw;
-    max-width: 300px;
-    text-align: justify;
-    background-color: white;
-    color: #000;
-    border-radius: 12px 12px 0px 0px;
-    box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.3);
-    height: 200px;
-    margin-bottom: 50px;
-}
-
-.mods {
-    margin-bottom: 50px;
-}
-
-.content article p {
-    position: relative;
-    bottom: 40px;
-}
-
-.content button {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: black;
-    background-color: #81e6d9;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-    border-radius: 0px 0px 10px 10px;
-    transition: 0.3s;
-    position: relative;
-    bottom: 25px;
-    right: 50px;
-    width: 300px;
-}
-
-.content button:hover {
-    background-color: #66d3c4;
-}
-
-.content-quarto {
-    background-color: #d9d9d9;
-    color:black;
-    z-index: -1;
-}
-
-.content-quarto p {
-    margin-left: 150px;
-    margin-right: 150px;
-    padding: 3vw 10vw 3vw;
-    text-align: justify;
 }
 
 hr {
@@ -132,89 +33,11 @@ h2 {
     padding-left: 10vw;
 }
 
-.text3 {
-    background-color: white;
-    color:black;
-    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.3), 0px -10px 5px rgba(0, 0, 0, 0.3);
-}
-
-.content {
-    flex: 1 0 auto;
-}
-
-.content p:not(.normal){
-    padding: 3vw 10vw 3vw;
-    text-align: justify;
-}
-
 footer {
     flex-shrink: 0;
     width: 100%;
     background: #1a1a1d;
     color: #79797a;
-}
-
-.content-footer {
-    text-align: center;
-    font-size: 16px;
-    padding: 30px 0 30px;
-}
-
-.bloc {
-    flex-basis: 20%;
-    margin: 0 30px;
-}
-
- /* Three image containers (use 25% for four, and 50% for two, etc) */
- .column {
-    float: left;
-    width: 33.33%;
-    padding: 5px;
-  }
-  
-  /* Clear floats after image containers */
-  .row::after {
-    content: "";
-    clear: both;
-    display: table;
-  } 
-
-.row .column img {
-    width: 30%;
-}
-
-/*ECRAN TELEPHONE*/
-@media screen and (max-width: 1000px) {
-    .content-footer {
-        max-width: 100%;
-        flex-wrap: wrap;
-    }
-    .bloc {
-        flex-basis: auto;
-        margin: 20px 20px;
-    }
-
-    p{
-        font-size: 2.2em;
-    }
-
-    h1{
-        font-size: 4.3em;
-    }
-    .row .column img {
-        width: 50%;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .content-footer {
-        justify-content: center;
-        padding-top: 30px;
-    }
-
-    .bloc {
-        flex-basis: 70%;
-    }
 }
 
 .copyright {
@@ -250,15 +73,4 @@ footer {
 
 .topnav-right {
     float: right;
-}
-
-h3, h1 {
-    text-align: center;
-}
-
-.container-links a{
-    color: #81e6d9;
-    text-decoration: none;
-    margin-left: 8px;
-    margin-right: 8px;
 }

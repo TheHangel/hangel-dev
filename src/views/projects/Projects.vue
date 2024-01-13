@@ -1,18 +1,19 @@
 <template>
-<div class="content">
-    <h1>Projets</h1>
-    <div class="jeux-text">
-        <h2>Jeux</h2>
-        <hr size="6" width="80%" color="#2f2f30">
-    </div>
-    <section class="projects">
-        <article v-for="project in projects">
-            <img :src="project.thumbnail" alt="project_thumbnail">
-            <p class="normal">{{ project.description }}</p>
-            <button>En savoir plus</button>
-        </article>
-    </section>
-</div>
+<h1 class="text-center">Projets</h1>
+<section class="flex flex-wrap m-24">
+    <article
+        v-for="project in projects"
+        class="bg-white w-64 h-64 shadow-lg rounded-lg m-8"
+    >
+        <img :src="project.thumbnail" alt="Description" class="w-full">
+        <div class="text-center p-4">
+            <p class="text-black">{{ project.description }}</p>
+        </div>
+        <div class="text-center">
+            <a href="#" class="inline-block w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">En savoir plus</a>
+        </div>
+    </article>
+</section>
 </template>
 
 <script>
