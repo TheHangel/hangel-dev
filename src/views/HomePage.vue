@@ -1,10 +1,3 @@
 <template>
-SALUT
+TEST HOMEPAGE
 </template>
-
-<script>
-
-export default {
-
-}
-</script>

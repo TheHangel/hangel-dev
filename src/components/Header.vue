@@ -1,8 +1,12 @@
 <template>
     <header>
         <div class="topnav">
-            <a class="home" href="/">Accueil</a>
-            <a class="active" href="projets.html">Projets</a>
+            <router-link :to="{ name: 'home' }">
+                <a class="home" href="/">Accueil</a>
+            </router-link>
+            <router-link :to="{ name: 'projects' }">
+                <a class="active">Projets</a>
+            </router-link>
             </div>
     </header>
 </template>
