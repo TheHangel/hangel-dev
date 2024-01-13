@@ -48,11 +48,12 @@ body{
     align-items: center;
 }
 
-.jeux img, .mods img {
+.projects img {
     position: relative;
     bottom: 50px;
     right: 50px;
     width: 300px;
+    max-width: 300px;
     border-radius: 10px 10px 0px 0px;
 }
 
@@ -64,9 +65,10 @@ body{
     text-align: justify;
     background-color: white;
     color: #000;
-    border-radius: 10px;
+    border-radius: 12px 12px 0px 0px;
     box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.3);
     height: 200px;
+    margin-bottom: 50px;
 }
 
 .mods {
