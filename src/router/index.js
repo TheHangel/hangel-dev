@@ -20,7 +20,7 @@ const router = createRouter({
         {
           path: 'the-fletching-table-mod',
           name: 'the-fletching-table-mod',
-          component: () => import('@/views/minecraft/TheFletchingTableMod.vue')
+          component: () => import('@/views/projects/minecraft/TheFletchingTableMod.vue')
         }
       ]
     },

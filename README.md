@@ -1,6 +1,6 @@
 # hangel-dev
 
-For now, the project just started. On the route : /minecraft/the-fletching-table-mod
+Portfolio project. Currently in development.
 
 ## Project Setup
 

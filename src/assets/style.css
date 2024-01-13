@@ -23,7 +23,7 @@ body{
     background-position: center;
     display: flex;
     flex-direction: column;
-    font-family: 'Readex Pro', sans-serif;
+    font-family: "Ubuntu", sans-serif;
     height: 100vh;
 
     display: flex;
