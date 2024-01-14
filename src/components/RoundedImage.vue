@@ -1,6 +1,11 @@
 <template>
     <div class="p-2 bg-white rounded-full shadow-lg">
-      <img :src="src" alt="Image Description" class="rounded-full border-2 border-white" />
+      <img
+            :src="src"
+            alt="Image Description"
+            class="rounded-full border-2 border-white"
+            :class="[width, height]"
+        />
     </div>
 </template>
 
@@ -10,6 +15,14 @@ export default {
         src: {
             type: String,
             required: true
+        },
+        width: {
+            type: String,
+            default: 'w-96'
+        },
+        height: {
+            type: String,
+            default: 'h-96'
         }
     }
 }
