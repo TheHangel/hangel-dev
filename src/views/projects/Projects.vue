@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-center">Projets</h1>
+    <h1 class="text-center text-5xl mt-8">Projets</h1>
     <div class="flex justify-center items-center">
         <section class="flex flex-wrap justify-center mt-0 mb-4">
             <div v-for="project in projects" class="m-8">
