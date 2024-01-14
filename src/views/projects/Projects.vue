@@ -17,7 +17,7 @@
                 </article>
                 <a
                     :href="project.link"
-                    class="inline-block text-center w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+                    class="inline-block bg-button text-center w-full bg-blue-500 text-slate-700 py-2 px-4 rounded hover:bg-button-hover"
                 >
                     En savoir plus
                 </a>

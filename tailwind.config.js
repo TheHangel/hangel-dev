@@ -8,6 +8,10 @@ module.exports = {
     extend: {
       fontFamily: {
         'minecraftia': ['minecraftia', 'sans-serif']
+      },
+      colors: {
+        'button': '#81e6d9',
+        'button-hover': '#66d3c4'
       }
     },
   },
