@@ -17,11 +17,10 @@
                 </article>
                 <a
                     :href="project.link"
-                    class="inline-block bg-button text-center w-full bg-blue-500 text-slate-700 py-2 px-4 rounded hover:bg-button-hover"
+                    class="inline-block bg-button text-center w-full bg-blue-500 text-slate-700 py-2 px-4 rounded-b hover:bg-button-hover"
                 >
                     En savoir plus
                 </a>
-
             </div>
         </section>
     </div>

@@ -7,6 +7,6 @@
             <router-link :to="{ name: 'projects' }">
                 <a class="active">Projets</a>
             </router-link>
-            </div>
+        </div>
     </header>
 </template>

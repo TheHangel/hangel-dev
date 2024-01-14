@@ -1,8 +1,12 @@
 <template>
-  <Header/>
-  <!--<button @click="changeLanguage('en')">English</button>
-  <button @click="changeLanguage('fr')">French</button>-->
-  <router-view />
+  <div class="flex flex-col min-h-screen">
+    <Header/>
+    <main class="flex-1">
+    <!--<button @click="changeLanguage('en')">English</button>
+    <button @click="changeLanguage('fr')">French</button>-->
+      <router-view />
+    </main>
+  </div>
   <Footer/>
 </template>
 
