@@ -3,12 +3,12 @@
         <h1 class="text-center text-5xl mt-8">Projets</h1>
         <div class="flex justify-center items-center">
             <section class="flex flex-wrap justify-center mt-0 mb-4">
-                <div v-for="project in projects" class="m-8">
-                    <article class="bg-white w-72 h-80 shadow-lg rounded-t-lg">
+                <div v-for="project in projects" class="m-32 shadow-lg transform scale-125">
+                    <article class="bg-white w-72 h-80 rounded-t-lg">
                         <img
                             :src="project.thumbnail"
                             alt="Description"
-                            class="w-full"
+                            class="w-full rounded-t"
                         >
 
                         <p class="text-center font-bold text-lg pt-4 text-black">{{ project.name }}</p>

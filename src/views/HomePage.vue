@@ -3,7 +3,7 @@
         <h1 class="text-center my-12 text-6xl">Portfolio de Thibaud Lebrasseur</h1>
         <div class="flex flex-col md:flex-row">
             <div class="md:w-1/2 indent-12 ml-32 text-justify">
-                <p>Je m’appelle Thibaud, j’ai 20 ans et je suis actuellement en 2e année de BUT informatique à
+                <p>Je m’appelle Thibaud, j’ai 20 ans et je suis actuellement en 3<sup>e</sup> année de BUT informatique à
 l’IUT Grand Ouest Normandie de l’Université de Caen. Mon objectif dans cette formation est de
 réaliser des projets numériques de manière professionnelle.
 Mon parcours a débuté en seconde, et je ne savais pas où m’orienter, je me suis dirigé vers
